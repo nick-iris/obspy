@@ -308,6 +308,7 @@ class Arrivals(list):
                 continue
             requested_phase_name_map[phase_name] = i
             i += 1
+        print(requested_phase_name_map)
 
         phase_names = sorted(parse_phase_list(phase_list))
         arrivals = []
@@ -359,12 +360,14 @@ class Arrivals(list):
             colors = {
                 name: COLORS[i % len(COLORS)]
                 for name, i in requested_phase_name_map.items()}
+            print(colors)
             i = len(colors)
             for name in sorted(phase_names_encountered):
                 if name in colors:
                     continue
                 colors[name] = COLORS[i % len(COLORS)]
                 i += 1
+            print(colors)
             for ray in arrivals:
                 color = colors.get(ray.name, 'k')
                 # Requires interpolation,or diffracted phases look funny.
